@@ -3,7 +3,7 @@
 clc
 clear
 
- mkdir C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\
+ mkdir Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\
  %mkdir C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\Raster_data_WITHOUT_answer\
  %mkdir C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\Raster_data_WITH_answer\
 
@@ -150,10 +150,10 @@ for n = 1:num_of_neurons_with_answer;
     title('C2')
 
     
-    folder_of_file{1} = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\' ;
+    folder_of_file{1} = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\' ;
     %date_time_now = datestr(now,'dd-mm-yy_HH-MM-FFF'); %info about real time (text representing dates and times)
     num_of_repetitions = [1:1:n];
-    fig_name = [folder_of_file{1}, 'random_raster_data_neuron_S_', num2str(raster_site_info.session_ID), '_Ch_', num2str(num_of_repetitions(:, n)), '_with_answer_on_1_St.png']; %create path and fig name
+    fig_name = [folder_of_file{1}, 'random_raster_data_neuron_S_', num2str(raster_site_info.session_ID), '_Ch_', num2str(num_of_repetitions(:, n)), '_with_answer.png']; %create path and fig name
     saveas(gcf, fig_name); % save the figure 
 
          
@@ -243,7 +243,7 @@ for n = 1:num_of_neurons_without_answer;
     xlabel('Time (ms)')
     title('C2')
     
-    folder_of_file{1} = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\' ;
+    folder_of_file{1} = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\' ;
     %date_time_now = datestr(now,'dd-mm-yy_HH-MM-FFF'); %info about real time (text representing dates and times)
     fig_name = [folder_of_file{1}, 'random_raster_data_neuron_S_', num2str(raster_site_info.session_ID), '_Ch_', num2str(num_of_repetitions(:, n)), '_without_answer.png']; %create path and fig name
     saveas(gcf, fig_name); % save the figure 
