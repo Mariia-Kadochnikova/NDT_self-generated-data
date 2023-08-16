@@ -23,9 +23,9 @@ bin_width = 100; %a bin size that specifies how much time the firing rates shoul
 step_size = 50; 
 
 %The output of this function will be a file:
-%mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
-%cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
-cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha
+mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
+cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
+%cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha
 %cd C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster
 create_binned_data_from_raster_data(raster_file_directory_name, save_prefix_name, bin_width, step_size);  
 
@@ -46,17 +46,18 @@ end
 
 %Creating a Datasource (DS) object
 % the name of the file that has the data in binned-format
-binned_format_file_name = 'Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
-%binned_format_file_name = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Raster_to_binned_with_my_function\Raster_to_binned_data.mat'
+binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
+%binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
+
+
 % will decode the identity of which object was shown (regardless of its position)
 specific_label_name_to_use = 'stimulus_ID';
 %  20 cross-validation runs
 num_cv_splits = 20;
 % Create a datasource that takes our binned data, and specifies that we want to decode
 ds = basic_DS(binned_format_file_name, specific_label_name_to_use, num_cv_splits)
-     %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS'];
-  file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS'];
-    %file_name = ['C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\binned_data_DS'];
+    file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS'];
+    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS'];
     save (file_name, 'ds');
     
 
@@ -82,10 +83,8 @@ the_cross_validator.num_resample_runs = 10;
 %Running the decoding analysis and saving the results
 % run the decoding analysis
 DECODING_RESULTS = the_cross_validator.run_cv_decoding;
-%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS'
-save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS'
-%save_file_name = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Binned_random_data_2_objects_DECODING_RESULTS'
-%save_file_name = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Raster_to_binned_with_my_function\Binned_random_data_2_objects_DECODING_RESULTS'
+save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS'
+%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS'
 save(save_file_name, 'DECODING_RESULTS');
 
 
@@ -109,10 +108,9 @@ plot_obj.significant_event_times = 0;
 plot_obj.plot_results;
 ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time.png');
-saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time.png');
-%saveas(gcf, 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Raster_to_binned_with_my_function\decoding_accuracy_as_a_function_of_time_WITH_rng_2.png');
-%saveas(gcf, 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\decoding_accuracy_as_a_function_of_time_WITH_rng_2.png.png'); 
+saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time.png');
+%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time.png');
+ 
 
 
 % Plot temporal cross training decoding accuracies
@@ -126,8 +124,7 @@ plot_obj_matrix.plot_results;
 ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
 %saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\temporal_cross_training_decoding_accuracies.png');
-%saveas(gcf, 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Raster_to_binned_with_my_function\temporal_cross_training_decoding_accuracies_WITH_rng_2.png'); % save the results
-%saveas(gcf, 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\temporal_cross_training_decoding_accuracies_WITH_rng_2.png');
+
 
 
 %tEnd = cputime - tStart
