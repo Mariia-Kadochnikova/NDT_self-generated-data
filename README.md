@@ -12,8 +12,15 @@ mat-files: each mat-file contains information about each neuron (the number of c
 Neurons are subdivided into stimulus-responsive and stimulus-unresponsive neurons. 
 
 
+# Raster_to_Binned_data
+The Mariia__Raster_to_Binned_data.m code converts raster data to binned data. 
+
+Output:                                                                        
+mat-files: Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat 
+
+
 # Neural_Decording_Toolbox
-Makes binned data from raster data and then performs decoding. 
+The Mariia__Neural_Decording_Toolbox.m code makes binned data from raster data and then performs decoding. 
 
 Output:                                                                        
 mat-files: 
