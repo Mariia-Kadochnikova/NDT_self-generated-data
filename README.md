@@ -7,7 +7,7 @@ The Random_raster_data__Create_by_Maria.m code creates a simulation of the origi
 The Random_raster_data__Create_by_Mariia.m file generates data, using a matrix of ones and zeros (the ratio of zeros to ones is approximately 1:1). 
 By multiplying the matrix by another matrix of zeros and ones, the number of ones in the required matrix is reduced, i.e. the number of units is dissolved.
 
-Output: 
+Output:                                                                           
 mat-files: each mat-file contains information about each neuron (the number of channels and neurons are equal). 
 Neurons are subdivided into stimulus-responsive and stimulus-unresponsive neurons. 
 
@@ -15,7 +15,7 @@ Neurons are subdivided into stimulus-responsive and stimulus-unresponsive neuron
 # Neural_Decording_Toolbox
 Makes binned data from raster data and then performs decoding. 
 
-Output: 
+Output:                                                                        
 mat-files: 
 Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat (contains binned data),
 binned_data_DS.mat (contains Datasource information), 
