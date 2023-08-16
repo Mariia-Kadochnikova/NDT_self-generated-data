@@ -41,13 +41,13 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 
 % to make sure that the random numbers are set the same each time
-%rng(1) % to get the same curves on the graph as the output
+rng(1) % to get the same curves on the graph as the output
 
 
 %Creating a Datasource (DS) object
 % the name of the file that has the data in binned-format
-binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
-%binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
+%binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
+binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
 
 
 % will decode the identity of which object was shown (regardless of its position)
@@ -56,8 +56,10 @@ specific_label_name_to_use = 'stimulus_ID';
 num_cv_splits = 20;
 % Create a datasource that takes our binned data, and specifies that we want to decode
 ds = basic_DS(binned_format_file_name, specific_label_name_to_use, num_cv_splits)
-    file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS'];
+    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS'];
     %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS'];
+    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS_rng'];
+    file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS_rng']
     save (file_name, 'ds');
     
 
@@ -83,8 +85,10 @@ the_cross_validator.num_resample_runs = 10;
 %Running the decoding analysis and saving the results
 % run the decoding analysis
 DECODING_RESULTS = the_cross_validator.run_cv_decoding;
-save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS'
+%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS'
 %save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS'
+%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS_rng'
+save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS_rng'
 save(save_file_name, 'DECODING_RESULTS');
 
 
@@ -108,9 +112,10 @@ plot_obj.significant_event_times = 0;
 plot_obj.plot_results;
 ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
-saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time.png');
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time.png');
- 
+%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time(2).png');
+%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time(2).png');
+%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time_rng(2).png');
+saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time_rng(2).png'); 
 
 
 % Plot temporal cross training decoding accuracies
