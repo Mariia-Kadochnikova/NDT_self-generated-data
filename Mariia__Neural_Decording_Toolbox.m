@@ -1,3 +1,6 @@
+%% If no binned data has been created, run the code from here   
+%(If binned data has been created, run the code from the next section )
+
 clc
 clear 
 
@@ -14,7 +17,6 @@ add_ndt_paths_and_init_rand_generator
 
 %the name of the directory where the raster-format data is stored
 raster_file_directory_name = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\'
-%raster_file_directory_name = 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\'
 
 
 %the name (potentially including a directory) that the binned data should be saved as,
@@ -24,9 +26,6 @@ step_size = 50;
 
 %The output of this function will be a file:
 mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
-cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
-%cd Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha
-%cd C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster
 create_binned_data_from_raster_data(raster_file_directory_name, save_prefix_name, bin_width, step_size);  
 
 
@@ -39,15 +38,24 @@ for k = 1:205
     num_sites_with_k_repeats(k) = length(inds_of_sites_with_at_least_k_repeats);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 
+
+
+%% If the binned data has already been created, run the code from here 
+
 % to make sure that the random numbers are set the same each time
 rng(1) % to get the same curves on the graph as the output
+rng_name = ['_rng']; % names in files, if run with the rng-function
+%rng_name = ['']; % names in files, if run without the rng-function
 
+% number of runs
+ nu = ['(5)']; % can be useful in file or picture names
+% nu = [''];
 
 %Creating a Datasource (DS) object
 % the name of the file that has the data in binned-format
-%binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
-binned_format_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'
+output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet');
+%output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha');
+    binned_format_file_name = [output_path '\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'];
 
 
 % will decode the identity of which object was shown (regardless of its position)
@@ -55,11 +63,8 @@ specific_label_name_to_use = 'stimulus_ID';
 %  20 cross-validation runs
 num_cv_splits = 20;
 % Create a datasource that takes our binned data, and specifies that we want to decode
-ds = basic_DS(binned_format_file_name, specific_label_name_to_use, num_cv_splits)
-    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS'];
-    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS'];
-    %file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\binned_data_DS_rng'];
-    file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\binned_data_DS_rng']
+ds = basic_DS(binned_format_file_name, specific_label_name_to_use, num_cv_splits);
+    file_name = [output_path '\binned_data_DS' rng_name nu];
     save (file_name, 'ds');
     
 
@@ -85,11 +90,9 @@ the_cross_validator.num_resample_runs = 10;
 %Running the decoding analysis and saving the results
 % run the decoding analysis
 DECODING_RESULTS = the_cross_validator.run_cv_decoding;
-%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS'
-%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS'
-%save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\Binned_random_data_2_objects_DECODING_RESULTS_rng'
-save_file_name = 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_DECODING_RESULTS_rng'
+save_file_name = [output_path '\Binned_random_data_2_objects_DECODING_RESULTS' rng_name nu];
 save(save_file_name, 'DECODING_RESULTS');
+
 
 
 %Plotting the results
@@ -99,7 +102,7 @@ result_names{1} = save_file_name;
 plot_obj = plot_standard_results_object(result_names);
 % display the results
 plot_obj.plot_results;
-%saveas(gcf, 'C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\decoding_accuracy_as_a_function_of_time_1.png'); % save the results
+%   saveas(gcf, [output_path '\decoding_accuracy_as_a_function_of_time_1' rng_name nu '.png']); 
 
 %Plot the decoding accuracy as a function of time
 % Specify the name of the file that we want to plot
@@ -112,10 +115,7 @@ plot_obj.significant_event_times = 0;
 plot_obj.plot_results;
 ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time(2).png');
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time(2).png');
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet\decoding_accuracy_as_a_function_of_time_rng(2).png');
-saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\decoding_accuracy_as_a_function_of_time_rng(2).png'); 
+    saveas(gcf, [output_path '\decoding_accuracy_as_a_function_of_time' rng_name nu '.png']);  
 
 
 % Plot temporal cross training decoding accuracies
@@ -128,7 +128,7 @@ plot_obj_matrix.significant_event_times = 0;
 plot_obj_matrix.plot_results;
 ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
-%saveas(gcf, 'Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\temporal_cross_training_decoding_accuracies.png');
+%   saveas(gcf, [output_path '\temporal_cross_training_decoding_accuracies' rng_name nu '.png']);  
 
 
 
