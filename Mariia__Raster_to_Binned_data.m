@@ -1,7 +1,8 @@
 clc
 clear 
 
-mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha
+mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\ 
+output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha');
 % Specify the folder where the files live.
 inpit_files = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\'; 
 
@@ -32,7 +33,7 @@ for q = 1:Size_matData (1, 2)
 end 
    binned_labels.stimulus_ID = stimulus_ID;
 %% number of cross-validation
-ds.num_cv_splits  = 20 % 20 cross-validation runs
+ds.num_cv_splits  = 20 ; % 20 cross-validation runs
 
 
 %% Create binned_site_info
@@ -46,8 +47,8 @@ end
  
 %% Create binned_site_info.binning_parameters  
 binned_site_info.binning_parameters.raster_file_directory_name = inpit_files ;
-binned_site_info.binning_parameters.bin_width = 100;  %a bin size that specifies how much time the firing rates should be calculated over,
-binned_site_info.binning_parameters.sampling_interval = 50;
+binned_site_info.binning_parameters.bin_width = 100;  % a bin size that specifies how much time the firing rates should be calculated over,
+binned_site_info.binning_parameters.sampling_interval = 50; 
 binned_site_info.binning_parameters.start_time  = 1;
 binned_site_info.binning_parameters.end_time = length(matData(1).raster_data); % Length on example of just one file, as the length of all time pieces for all files must be equal. 
 
@@ -59,7 +60,7 @@ binned_site_info.binning_parameters.the_bin_start_times = bin_start_time;
 binned_site_info.binning_parameters.the_bin_widths = bin_widths;
 
 for t = 1:Size_matData (1, 2) 
-    binned_site_info.binning_parameters.alignment_event_time = matData(t).raster_site_info.alignment_event_time
+    binned_site_info.binning_parameters.alignment_event_time = matData(t).raster_site_info.alignment_event_time ;
 end 
 
 %% Create binned data
@@ -70,14 +71,14 @@ end
 
   
 %% save
- file_name = ['Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'];
+ file_name = [output_path '\Binned_random_data_2_objects_' num2str(binned_site_info.binning_parameters.bin_width) 'ms_bins_' num2str(binned_site_info.binning_parameters.sampling_interval) 'ms_sampled.mat'];
  save (file_name, 'binned_data', 'binned_labels', 'binned_site_info');
  
  %% create basic_DS format of "ds" variable 
  ds = basic_DS(binned_data, binned_labels , ds.num_cv_splits);
  
  %% save
-%  file_name = ['C:\Data\Mariia\testNDT\Created_data_by_Mariia\Binned_data_after_Raster\Raster_to_binned_data_DS\Raster_to_binned_data_DS.mat'];
+%  file_name = [output_path '\Raster_to_binned_data_DS.mat'];
 %  save (file_name, 'ds');
  
  
