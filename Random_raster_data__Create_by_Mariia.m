@@ -4,8 +4,6 @@ clc
 clear
 
  mkdir Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\
- %mkdir C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\Raster_data_WITHOUT_answer\
- %mkdir C:\Data\Mariia\testNDT\Created_data_by_Mariia\Create_from_Raster\Raster_data_WITH_answer\
 
 % create raster_data
 
@@ -32,7 +30,7 @@ create_stimul = zeros(n_trials,n_time/2)+ randi([0 1],n_trials,n_time/2);
 num_of_neurons_with_answer = 10;
 for n = 1:num_of_neurons_with_answer;
     
-    rng(1)
+    %rng(1)
     before_stimul = create_stimul.*randi([0 1],n_trials,n_time/2); % trials x time/2 (before stimul)
     %make the number of zeros higher and the number of ones lower
     %to make the matrix more similar to the original data
@@ -122,8 +120,8 @@ for n = 1:num_of_neurons_with_answer;
     % view the PSTH for one neuron
     subplot(2, 2, 2)
     bar(sum(raster_data));
-    line([500 500], [0 25], 'color', [1 0 0]);
-    ylim([0 25]);
+    line([500 500], [0 30], 'color', [1 0 0]);
+    ylim([0 30]);
     ylabel('Number of spikes')
     xlabel('Time (ms)')
     title('PSTH')
@@ -132,10 +130,10 @@ for n = 1:num_of_neurons_with_answer;
     frequency_raster_data = sum(raster_data); % frequency = spikes/sec (Hz)
     subplot(2, 2, 3)
     bar(sum(raster_data(1:200, :))); 
-    line([500 500], [0 25], 'color', [1 0 0]);
+    line([500 500], [0 30], 'color', [1 0 0]);
 %     hold on; 
 %     plot(sum(raster_data),'Color',[0,1,0]);
-    ylim([0 25]);
+    ylim([0 30]);
     ylabel('Number of spikes')
     xlabel('Time (ms)')
     title('C1')
@@ -143,8 +141,8 @@ for n = 1:num_of_neurons_with_answer;
      % view the C2 for one neuron
     subplot(2, 2, 4)
     bar(sum(raster_data(201:400, :)));
-    line([500 500], [0 25], 'color', [1 0 0]);
-    ylim([0 25]);
+    line([500 500], [0 30], 'color', [1 0 0]);
+    ylim([0 30]);
     ylabel('Number of spikes')
     xlabel('Time (ms)')
     title('C2')
