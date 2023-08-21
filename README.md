@@ -8,8 +8,11 @@ The Random_raster_data__Create_by_Mariia.m file generates data, using a matrix o
 By multiplying the matrix by another matrix of zeros and ones, the number of ones in the required matrix is reduced, i.e. the number of units is dissolved.
 
 Output:                                                                           
-mat-files: each mat-file contains information about each neuron (the number of channels and neurons are equal). 
+mat-files: files such as random_raster_data_neuron_S_0_Ch_2_with_answer.mat, where each mat-file contains information about each neuron (the number of channels and neurons are equal). 
 Neurons are subdivided into stimulus-responsive and stimulus-unresponsive neurons. 
+
+pictures:                                                                                       
+such as random_raster_data_neuron_S_0_Ch_1_without_answer.png
 
 
 # Raster_to_Binned_data
@@ -28,5 +31,5 @@ Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat (contains binned data),
 binned_data_DS.mat (contains Datasource information), 
 Binned_random_data_2_objects_DECODING_RESULTS.mat (contains the result of decoding)
 
-graphics: 
+pictures: 
 decoding_accuracy_as_a_function_of_time.png (graph of decoding accuracy as a function of time) 
