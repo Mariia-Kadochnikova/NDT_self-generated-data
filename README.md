@@ -11,8 +11,9 @@ The Mariia__Random_raster_data.m code creates a simulation of the raster data (0
 Algorithm: Mariia__Random_raster_data.m file generates data, using a matrix of ones and zeros (the ratio of zeros to ones is approximately 1:1). 
 By multiplying the matrix by another matrix of zeros and ones, the number of ones in the required matrix is reduced.
 
-Output:
-                                                                           
+Input: not required                                                                                              
+
+Output:                                                                                                                       
 mat-files: files such as random_raster_data_neuron_2_with_response.mat, where each mat-file contains information about one neuron. 
 Neurons are subdivided into stimulus-responsive ("with response") and stimulus-unresponsive ("without response") neurons. 
 
