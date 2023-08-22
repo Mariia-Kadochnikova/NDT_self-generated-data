@@ -2,16 +2,13 @@ function Mariia__Neural_Decording_Toolbox(start_from_raster)
 % Mariia__Neural_Decording_Toolbox(0); % start from binned
 % Mariia__Neural_Decording_Toolbox(1); % start from raster
 
-if nargin < 1,
-    start_from_raster = 1; % 1 - start from raster, 0 - start from binned data
+
+if nargin < 1
+   start_from_raster = 1; % 1 - start from raster, 0 - start from binned data
 end
 
-if start_from_raster, %% If no binned data has been created, run the code from here
+if start_from_raster %% If no binned data has been created, run the code from here
     %(If binned data has been created, run the code from the next section )
-
-    %to measure the performance of my code
-    %tic
-    tStart = cputime;
     
     % add the path to the NDT so add_ndt_paths_and_init_rand_generator can be called
     toolbox_basedir_name = 'ndt.1.0.4/'
@@ -20,17 +17,18 @@ if start_from_raster, %% If no binned data has been created, run the code from h
     % add the NDT paths using add_ndt_paths_and_init_rand_generator
     add_ndt_paths_and_init_rand_generator
     
+    run('Mariia__NDT_settings');
     %the name of the directory where the raster-format data is stored
-    raster_file_directory_name = 'Y:\Personal\Igor\NDT_self-generated-data\Create_from_Raster\'
+    raster_file_directory_name = [BASE_PATH 'NDT_self-generated-data\Raster_data\']; % Specify the folder where the files live.
     
     
     %the name (potentially including a directory) that the binned data should be saved as,
-    save_prefix_name = 'Binned_random_data_2_objects';
+    mkdir ([BASE_PATH 'NDT_self-generated-data\Binned_data\from_NDT\']);
+    save_prefix_name = [BASE_PATH 'NDT_self-generated-data\Binned_data\from_NDT\Binned_random_data_2_objects'];
     bin_width = 100; %a bin size that specifies how much time the firing rates should be calculated over,
     step_size = 50;
     
     %The output of this function will be a file:
-    mkdir Y:\Personal\Igor\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Internet
     create_binned_data_from_raster_data(raster_file_directory_name, save_prefix_name, bin_width, step_size);
     
     
@@ -49,19 +47,27 @@ end
 
 %% If the binned data has already been created, run the code from here
 
-% to make sure that the random numbers are set the same each time
+
+    % to make sure that the random numbers are set the same each time
 % rng(1) % to get the same curves on the graph as the output
 % rng_name = ['_rng']; % names in files, if run with the rng-function
 rng_name = ['']; % names in files, if run without the rng-function
 
 % number of runs
-nu = ['(5)']; % can be useful in file or picture names
+nu = ['(2)']; % can be useful in file or picture names
 % nu = [''];
 
 %Creating a Datasource (DS) object
 % the name of the file that has the data in binned-format
-output_path = cd([BASE_DIR 'NDT_self-generated-data\Binned_data\from_own_code']);
-%output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha');
+
+run('Mariia__NDT_settings');
+
+if start_from_raster
+    output_path = cd([BASE_PATH 'NDT_self-generated-data\Binned_data\from_NDT']);
+end   
+    output_path = cd([BASE_PATH 'NDT_self-generated-data\Binned_data\from_own_code']);
+
+    
 binned_format_file_name = [output_path '\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'];
 
 
@@ -137,8 +143,5 @@ ylim([0 100]);
 line([0 0], [0 100], 'color', [0.6 0.6 0.6]);
 %   saveas(gcf, [output_path '\temporal_cross_training_decoding_accuracies' rng_name nu '.png']);
 
-
-
-%tEnd = cputime - tStart
-%toc
 beep
+end
