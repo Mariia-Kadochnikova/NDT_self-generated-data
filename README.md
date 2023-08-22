@@ -24,7 +24,7 @@ plots: such as random_raster_data_neuron_1_without_response.png
 The Mariia__Raster_to_Binned_data.m code converts raster data to binned data.
 
 Input:                                                                                                                   
-mat-files: from folder \Raster data                                                                           
+mat-files: from folder ...\Raster data                                                                           
 
 Output:                                                                        
 mat-file: Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat 
@@ -35,9 +35,9 @@ The Mariia__Neural_Decording_Toolbox.m code makes binned data from raster data a
 
 Input:                                                                                                                              
 mat-files:                                                                                                                            
-1.from folder …\Raster data                                                                                                                  
+1. from folder ...\Raster data                                                                                                                  
 or                                                                                                                                                                                                                         
-2.from folder …\Binned_data\from_own_code                                                                                                                                                                                  
+2. from folder ...\Binned_data\from_own_code                                                                                                                                                                                  
 
 Output:                                                                        
 mat-files: 
