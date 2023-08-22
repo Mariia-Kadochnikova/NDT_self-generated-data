@@ -1,8 +1,12 @@
-% Mariia__Neural_Decording_Toolbox
- clc
- clear
-    
-if 0 %% If no binned data has been created, run the code from here
+function Mariia__Neural_Decording_Toolbox(start_from_raster)
+% Mariia__Neural_Decording_Toolbox(0); % start from binned
+% Mariia__Neural_Decording_Toolbox(1); % start from raster
+
+if nargin < 1,
+    start_from_raster = 1; % 1 - start from raster, 0 - start from binned data
+end
+
+if start_from_raster, %% If no binned data has been created, run the code from here
     %(If binned data has been created, run the code from the next section )
 
     %to measure the performance of my code
