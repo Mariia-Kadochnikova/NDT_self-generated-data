@@ -14,7 +14,7 @@ By multiplying the matrix by another matrix of zeros and ones, the number of one
 Output:
                                                                            
 mat-files: files such as random_raster_data_neuron_S_0_Ch_2_with_answer.mat, where each mat-file contains information about one neuron. 
-Neurons are subdivided into stimulus-responsive and stimulus-unresponsive neurons. 
+Neurons are subdivided into stimulus-responsive ("with answer") and stimulus-unresponsive ("without answer") neurons. 
 
 plots:                                                                                       
 such as random_raster_data_neuron_S_0_Ch_1_without_answer.png
