@@ -13,11 +13,11 @@ By multiplying the matrix by another matrix of zeros and ones, the number of one
 
 Output:
                                                                            
-mat-files: files such as random_raster_data_neuron_S_0_Ch_2_with_answer.mat, where each mat-file contains information about one neuron. 
-Neurons are subdivided into stimulus-responsive ("with answer") and stimulus-unresponsive ("without answer") neurons. 
+mat-files: files such as random_raster_data_neuron_2_with_response.mat, where each mat-file contains information about one neuron. 
+Neurons are subdivided into stimulus-responsive ("with response") and stimulus-unresponsive ("without response") neurons. 
 
 plots:                                                                                       
-such as random_raster_data_neuron_S_0_Ch_1_without_answer.png
+such as random_raster_data_neuron_1_without_response.png
 
 
 # Raster_to_Binned_data
