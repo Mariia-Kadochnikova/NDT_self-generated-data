@@ -5,11 +5,11 @@ clear
 
 run('Mariia__NDT_settings');
 
-input_files_folder = [BASE_PATH 'NDT_self-generated-data\Create_from_Raster\']; % Specify the folder where the files live.
-binned_data_dir = [BASE_PATH 'NDT_self-generated-data\Binned_data\from_own_code\'];
+input_files_folder = [BASE_PATH 'NDT_self-generated-data\Raster_data\']; % Specify the folder where the files live.
+binned_data_path = [BASE_PATH 'NDT_self-generated-data\Binned_data\from_own_code\'];
 
-mkdir(binned_data_dir);
-output_path = cd(binned_data_dir);
+mkdir(binned_data_path);
+output_path = cd(binned_data_path);
 
 
 
@@ -24,7 +24,7 @@ end
 %% Loading raster files
 % Get a list of all files in the folder with the desired file name pattern.
 
-filePattern = fullfile(input_files_folder, 'random_raster_data_neuron_S_0_Ch_*.mat'); % Change to whatever pattern you need.
+filePattern = fullfile(input_files_folder, 'random_raster_data_neuron_*.mat'); % Change to whatever pattern you need.
 matFiles = dir(filePattern);
 for k = 1:length(matFiles)
     baseFileName = matFiles(k).name;
