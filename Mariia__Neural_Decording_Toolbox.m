@@ -1,11 +1,11 @@
 % Mariia__Neural_Decording_Toolbox
-
+ clc
+ clear
+    
 if 0 %% If no binned data has been created, run the code from here
     %(If binned data has been created, run the code from the next section )
     
-    clc
-    clear
-    
+
     %to measure the performance of my code
     %tic
     tStart = cputime;
@@ -57,7 +57,7 @@ nu = ['(5)']; % can be useful in file or picture names
 
 %Creating a Datasource (DS) object
 % the name of the file that has the data in binned-format
-output_path = cd('Y:\Personal\Igor\NDT_self-generated-data\Binned_data\from_own_code');
+output_path = cd([BASE_DIR 'NDT_self-generated-data\Binned_data\from_own_code']);
 %output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha');
 binned_format_file_name = [output_path '\Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat'];
 

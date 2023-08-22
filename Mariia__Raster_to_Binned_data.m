@@ -3,8 +3,10 @@
 clc
 clear 
 
-input_files_folder = 'Y:\Personal\Igor\NDT_self-generated-data\Create_from_Raster\'; % Specify the folder where the files live.
-binned_data_dir = 'Y:\Personal\Igor\NDT_self-generated-data\Binned_data\from_own_code\';
+run('Mariia__NDT_settings');
+
+input_files_folder = [BASE_PATH 'NDT_self-generated-data\Create_from_Raster\']; % Specify the folder where the files live.
+binned_data_dir = [BASE_PATH 'NDT_self-generated-data\Binned_data\from_own_code\'];
 
 mkdir(binned_data_dir);
 output_path = cd(binned_data_dir);

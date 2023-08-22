@@ -3,8 +3,9 @@
 clc
 clear
 
-% raster_data_dir = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster';
-raster_data_dir = 'Y:\Personal\Igor\NDT_self-generated-data\Create_from_Raster';
+run('Mariia__NDT_settings');
+
+raster_data_dir = [BASE_PATH 'NDT_self-generated-data\Create_from_Raster'];
 
 
 mkdir(raster_data_dir);
