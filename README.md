@@ -5,10 +5,10 @@ The code requires NDT.
 
 
 # Random_raster_data
-The Random_raster_data__Create_by_Mariia.m code creates a simulation of the raster data (0 and 1 at 1 ms resolution).
+The Mariia__Random_raster_data.m code creates a simulation of the raster data (0 and 1 at 1 ms resolution).
 
 
-Algorithm: Random_raster_data__Create_by_Mariia.m file generates data, using a matrix of ones and zeros (the ratio of zeros to ones is approximately 1:1). 
+Algorithm: Mariia__Random_raster_data.m file generates data, using a matrix of ones and zeros (the ratio of zeros to ones is approximately 1:1). 
 By multiplying the matrix by another matrix of zeros and ones, the number of ones in the required matrix is reduced.
 
 Output:
