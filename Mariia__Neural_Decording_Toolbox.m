@@ -4,7 +4,6 @@
     
 if 0 %% If no binned data has been created, run the code from here
     %(If binned data has been created, run the code from the next section )
-    
 
     %to measure the performance of my code
     %tic
