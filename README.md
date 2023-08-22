@@ -17,12 +17,14 @@ Output:
 mat-files: files such as random_raster_data_neuron_2_with_response.mat, where each mat-file contains information about one neuron. 
 Neurons are subdivided into stimulus-responsive ("with response") and stimulus-unresponsive ("without response") neurons. 
 
-plots:                                                                                       
-such as random_raster_data_neuron_1_without_response.png
+plots: such as random_raster_data_neuron_1_without_response.png
 
 
 # Raster_to_Binned_data
 The Mariia__Raster_to_Binned_data.m code converts raster data to binned data.
+
+Input:                                                                                                                   
+mat-files: from folder \Raster data                                                                           
 
 Output:                                                                        
 mat-file: Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat 
@@ -30,6 +32,12 @@ mat-file: Binned_random_data_2_objects_100ms_bins_50ms_sampled.mat
 
 # Neural_Decording_Toolbox
 The Mariia__Neural_Decording_Toolbox.m code makes binned data from raster data and then performs decoding. 
+
+Input:                                                                                                                              
+mat-files:                                                                                                                            
+1.from folder …\Raster data                                                                                                                  
+or                                                                                                                                                                                                                         
+2.from folder …\Binned_data\from_own_code                                                                                                                                                                                  
 
 Output:                                                                        
 mat-files: 
