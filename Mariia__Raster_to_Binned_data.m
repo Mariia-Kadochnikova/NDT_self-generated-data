@@ -1,15 +1,20 @@
+%  Mariia__Raster_to_Binned_data
+
 clc
 clear 
 
-mkdir Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha\ 
-output_path = cd('Y:\Personal\Masha\NDT_self-generated-data\Binned_data_after_Raster\by_code_from_Masha');
-% Specify the folder where the files live.
-inpit_files = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\'; 
+input_files_folder = 'Y:\Personal\Igor\NDT_self-generated-data\Create_from_Raster\'; % Specify the folder where the files live.
+binned_data_dir = 'Y:\Personal\Igor\NDT_self-generated-data\Binned_data\from_own_code\';
+
+mkdir(binned_data_dir);
+output_path = cd(binned_data_dir);
+
+
 
 %% Check to make sure that folder actually exists.  Warn user if it doesn't.
 
-if ~isdir(inpit_files)
-    errorMessage = sprintf('Error: The following folder does not exist:\n%s', inpit_files);
+if ~isfolder(input_files_folder)
+    errorMessage = sprintf('Error: The following folder does not exist:\n%s', input_files_folder);
     uiwait(warndlg(errorMessage));
     return;
 end
@@ -17,11 +22,11 @@ end
 %% Loading raster files
 % Get a list of all files in the folder with the desired file name pattern.
 
-filePattern = fullfile(inpit_files, 'random_raster_data_neuron_S_0_Ch_*.mat'); % Change to whatever pattern you need.
+filePattern = fullfile(input_files_folder, 'random_raster_data_neuron_S_0_Ch_*.mat'); % Change to whatever pattern you need.
 matFiles = dir(filePattern);
 for k = 1:length(matFiles)
     baseFileName = matFiles(k).name;
-    fullFileName = fullfile(inpit_files, baseFileName);
+    fullFileName = fullfile(input_files_folder, baseFileName);
     fprintf(1, 'Now reading %s\n', fullFileName);
     matData(k) = load(fullFileName); % matData contain all information from raster data files
 end
@@ -46,7 +51,7 @@ for w = 1:Size_matData (1, 2)
 end 
  
 %% Create binned_site_info.binning_parameters  
-binned_site_info.binning_parameters.raster_file_directory_name = inpit_files ;
+binned_site_info.binning_parameters.raster_file_directory_name = input_files_folder ;
 binned_site_info.binning_parameters.bin_width = 100;  % a bin size that specifies how much time the firing rates should be calculated over,
 binned_site_info.binning_parameters.sampling_interval = 50; 
 binned_site_info.binning_parameters.start_time  = 1;
@@ -73,6 +78,8 @@ end
 %% save
  file_name = [output_path '\Binned_random_data_2_objects_' num2str(binned_site_info.binning_parameters.bin_width) 'ms_bins_' num2str(binned_site_info.binning_parameters.sampling_interval) 'ms_sampled.mat'];
  save (file_name, 'binned_data', 'binned_labels', 'binned_site_info');
+ fprintf(1, 'Now saving %s\n', file_name);
+ 
  
  %% create basic_DS format of "ds" variable 
  ds = basic_DS(binned_data, binned_labels , ds.num_cv_splits);

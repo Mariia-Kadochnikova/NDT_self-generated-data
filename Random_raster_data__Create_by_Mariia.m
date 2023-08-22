@@ -3,7 +3,13 @@
 clc
 clear
 
- mkdir Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\
+% raster_data_dir = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster';
+raster_data_dir = 'Y:\Personal\Igor\NDT_self-generated-data\Create_from_Raster';
+
+
+mkdir(raster_data_dir);
+
+
 
 % create raster_data
 
@@ -148,7 +154,7 @@ for n = 1:num_of_neurons_with_answer;
     title('C2')
 
     
-    folder_of_file{1} = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\' ;
+    folder_of_file{1} = [raster_data_dir filesep];
     %date_time_now = datestr(now,'dd-mm-yy_HH-MM-FFF'); %info about real time (text representing dates and times)
     num_of_repetitions = [1:1:n];
     fig_name = [folder_of_file{1}, 'random_raster_data_neuron_S_', num2str(raster_site_info.session_ID), '_Ch_', num2str(num_of_repetitions(:, n)), '_with_answer.png']; %create path and fig name
@@ -173,7 +179,7 @@ end
 
 % neuroms without the answer
 num_of_neurons_without_answer = 8;
-for n = 1:num_of_neurons_without_answer;
+for n = 1:num_of_neurons_without_answer
     
     %rng(1)
     before_stimul = create_stimul.*randi([0 1],n_trials,n_time/2); % trials x time/2 (before stimul)
@@ -241,7 +247,6 @@ for n = 1:num_of_neurons_without_answer;
     xlabel('Time (ms)')
     title('C2')
     
-    folder_of_file{1} = 'Y:\Personal\Masha\NDT_self-generated-data\Create_from_Raster\' ;
     %date_time_now = datestr(now,'dd-mm-yy_HH-MM-FFF'); %info about real time (text representing dates and times)
     fig_name = [folder_of_file{1}, 'random_raster_data_neuron_S_', num2str(raster_site_info.session_ID), '_Ch_', num2str(num_of_repetitions(:, n)), '_without_answer.png']; %create path and fig name
     saveas(gcf, fig_name); % save the figure 
